@@ -32,14 +32,6 @@ public class Main extends Application {
         stage.setMinHeight(680);
         stage.setMinWidth(680);
         stage.setScene(scene);
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-
-                                    @Override
-                                    public void handle(WindowEvent windowEvent) {
-                                        System.out.println("wowww");
-                                        System.exit(0);
-        }
-                                });
         stage.widthProperty().addListener((ObservableValue<? extends Number> ov, Number t, Number t1) -> {
             stage.setHeight(t1.doubleValue());
         });
