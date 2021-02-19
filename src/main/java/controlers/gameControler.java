@@ -1,17 +1,15 @@
 package controlers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import logic.*;
+
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class gameControler{
     private static StackPane[][] stackPaneGrid =new StackPane[20][20];
@@ -20,8 +18,7 @@ public class gameControler{
     private static String[][] data=new String[20][20];
     private gameLogic logic=new gameLogic();
     private GUIReload reloader=new GUIReload(this);
-    Thread reloadThread=new Thread(reloader);
-
+    private Thread reloadThread=new Thread(reloader);
     @FXML
     private AnchorPane main;
     @FXML
@@ -40,6 +37,17 @@ public class gameControler{
     private AnchorPane InventoryBG;
     @FXML
     private Label healtLabel;
+    @FXML
+    private ImageView inventoryButton;
+    @FXML
+    private ImageView armorButton;
+    @FXML
+    private ImageView informationButton;
+    @FXML
+    private ImageView dropButton;
+    @FXML
+    private ImageView exitButton;
+
 
 
     public gameControler() throws FileNotFoundException {
@@ -54,7 +62,13 @@ public class gameControler{
         characterImage.setImage(new Image(Paths.get("src", "main", "resources", "textures/icon22.png").toUri().toString()));
         inventoryPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         inventoryPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        reloadThread.setDaemon(true);
         reloadThread.start();
+        Tooltip.install(inventoryButton, new Tooltip("Inventory"));
+        Tooltip.install(armorButton, new Tooltip("Armor"));
+        Tooltip.install(informationButton, new Tooltip("Information"));
+        Tooltip.install(dropButton, new Tooltip("actualDrop"));
+        Tooltip.install(exitButton, new Tooltip("Exit"));
     }
 
     public void move() throws FileNotFoundException {
@@ -75,7 +89,6 @@ public class gameControler{
                 data[x][y]="@";
             }
         }
-        setHealtLabel("s");
     }
 
     public void setHealt(){
@@ -173,10 +186,71 @@ public class gameControler{
         }
     }
 
+    public void inventoryButtonAdd(){
+        inventoryButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/inventoryButtonPressed.png").toUri().toString()));
+    }
+    public void inventoryButtonDelete(){
+        inventoryButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/inventoryButton.png").toUri().toString()));
+    }
+    public void inventoryOpen(){
+        JOptionPane.showMessageDialog(null, "kutassówka");
+    }
+
+    public void armorButtonAdd(){
+        armorButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/armorButtonPressed.png").toUri().toString()));
+    }
+    public void armorButtonDelete(){
+        armorButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/armorButton.png").toUri().toString()));
+    }
+    public void armorOpen(){
+        JOptionPane.showMessageDialog(null, "inventory");
+    }
+
+    public void informationButtonAdd(){
+        informationButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/InfoButtonPressed.png").toUri().toString()));
+    }
+    public void informationButtonDelete(){
+        informationButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/InfoButton.png").toUri().toString()));
+    }
+    public void informationOpen(){
+        JOptionPane.showMessageDialog(null, "information");
+    }
+
+    public void dropButtonAdd(){
+        dropButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/dropButtonPressed.png").toUri().toString()));
+    }
+    public void dropButtonDelete(){
+        dropButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/dropButton.png").toUri().toString()));
+    }
+    public void dropOpen(){
+        JOptionPane.showMessageDialog(null, "Drop is here");
+    }
+
+    public void exitButtonAdd(){
+        exitButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/exitButtonPressed.png").toUri().toString()));
+    }
+    public void exitButtonDelete(){
+        exitButton.setImage(new Image(Paths.get("src", "main", "resources", "textures/exitButton.png").toUri().toString()));
+    }
+    public void exit(){
+
+        ;
+        if(JOptionPane.showConfirmDialog(null,"Are you sure to Exit Game?")>0){
+
+        } else {
+            System.exit(0);
+        }
+    }
+
+    public Label getHealtLabel(){
+        return healtLabel;
+    }
+
+
+
     public gameLogic getLogic() {
         return logic;
     }
-
      public void createStackPaneGrid(){
         for(int y=0; y<20;y++) {
             for (int x = 0; x < 20; x++) {

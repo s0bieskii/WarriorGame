@@ -283,5 +283,30 @@
             </GridPane>
          </children>
       </AnchorPane>
+       <ImageView fx:id="exitButton" fitHeight="55.0" fitWidth="55.0" layoutX="590.0" layoutY="470.0" onMouseClicked="#exit" onMouseEntered="#exitButtonAdd" onMouseExited="#exitButtonDelete" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="340.0" AnchorPane.rightAnchor="2.0">
+           <image>
+               <Image url="@../textures/ExitButton.png" />
+           </image>
+       </ImageView>
+       <ImageView fx:id="informationButton" fitHeight="55.0" fitWidth="55.0" layoutX="590.0" layoutY="470.0" onMouseClicked="#informationOpen" onMouseEntered="#informationButtonAdd" onMouseExited="#informationButtonDelete" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="280.0" AnchorPane.rightAnchor="2.0">
+           <image>
+               <Image url="@../textures/InfoButton.png" />
+           </image>
+       </ImageView>
+      <ImageView fx:id="inventoryButton" fitHeight="55.0" fitWidth="55.0" layoutX="590.0" layoutY="470.0" onMouseClicked="#inventoryOpen" onMouseEntered="#inventoryButtonAdd" onMouseExited="#inventoryButtonDelete" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="2.0">
+         <image>
+            <Image url="@../textures/InventoryButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="armorButton" fitHeight="55.0" fitWidth="55.0" layoutX="590.0" layoutY="420.0" onMouseClicked="#armorOpen" onMouseEntered="#armorButtonAdd" onMouseExited="#armorButtonDelete" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="220.0" AnchorPane.rightAnchor="2.0">
+         <image>
+            <Image url="@../textures/ArmorButton.png" />
+         </image>
+      </ImageView>
+       <ImageView fx:id="dropButton" fitHeight="55.0" fitWidth="55.0" layoutX="590.0" layoutY="470.0" onMouseClicked="#dropOpen" onMouseEntered="#dropButtonAdd" onMouseExited="#dropButtonDelete" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="2.0">
+           <image>
+               <Image url="@../textures/dropButton.png" />
+           </image>
+       </ImageView>
    </children>
 </AnchorPane>

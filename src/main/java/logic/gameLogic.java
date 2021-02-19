@@ -177,9 +177,6 @@ public class gameLogic {
 
     }
 
-
-
-
     private void texturesLoad() throws FileNotFoundException {
         File file=new File(Paths.get("src", "main", "resources", "textures/mapTexture.txt").toUri());
         Scanner reader=new Scanner(file);

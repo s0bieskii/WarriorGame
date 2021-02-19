@@ -1,5 +1,6 @@
 package controlers;
 
+import javafx.application.Platform;
 import logic.Hero;
 import logic.Monster;
 import logic.gameLogic;
@@ -24,11 +25,17 @@ class GUIReload implements Runnable{
         hero=logic.getHero();
         int n=0;
         while (true){
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             monsters=logic.getMonsters();
             if(System.currentTimeMillis()-lastTime>1200 && !monsters.isEmpty() && !(logic.getHero().getCurrentHealt()<=0)){
                 monsters.stream().forEach(e->hero.takeDamage(e.getDamage()));
-                controler.setHealt();
                 lastTime=System.currentTimeMillis();
+                controler.setHealt();
+                controler.setHealtLabel("s");
             }
             if(hero.getCurrentHealt()==0){
                 JOptionPane.showMessageDialog(null, "Lose!");
